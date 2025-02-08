@@ -53,7 +53,7 @@ const { title, pubDate } = Astro.props;
 		<main>
 			<article class="poem">
 				<header>
-					<h1>{title.replace(/\*/g, "")}</h1>
+					<h1>{title.slice(0, 3) === "***" ? "***" : title}</h1>
 				</header>
 				<hr />
 				<slot />
