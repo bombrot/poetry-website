@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE } from "../consts";
+const SITE_DESCRIPTION = "Анна Деманова, обо мне";
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			figure {
+				margin-top: 2em;
+				display: flex;
+				justify-content: space-evenly;
+				align-items: flex-end;
+				flex-wrap: wrap;
+				gap: 1em;
+			}
+			img {
+				width: 10em;
+				border: 1px solid black;
+				box-shadow: 1em 1em var(--blue);
+			}
+			h1 {
+				font-family: "AnonymousPro";
+				transform: rotate(180deg);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<figure>
+				<img src="/images/about.jpg" alt="нарисованная девочка" />
+				<figcaption>
+					<h1>пиу пау</h1>
+				</figcaption>
+			</figure>
+		</main>
+		<Footer />
+	</body>
+</html>

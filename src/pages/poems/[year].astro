@@ -1,0 +1,70 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("poems");
+	const years = [
+		...new Set(posts.map((post) => post.data.pubDate.getFullYear().toString())),
+	];
+
+	return years.map((year) => {
+		const filteredPosts = posts.filter(
+			(post) => post.data.pubDate.getFullYear().toString() === year,
+		);
+		return {
+			params: { year },
+			props: { posts: filteredPosts },
+		};
+	});
+}
+
+const { posts } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				display: flex;
+				justify-content: center;
+			}
+			ul {
+				list-style-type: square;
+				padding-left: 1em;
+			}
+			li {
+				padding: 0.2em 0;
+			}
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<ul>
+				{
+					posts.reverse().map((post) => (
+						<li>
+							<a href={`/poems/${post.id}/`}>
+								{post.data.title.replace(/\*/g, "")}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

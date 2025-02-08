@@ -1,0 +1,32 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<header>
+	<nav>
+		<h1><a href="/">{SITE_TITLE}</a></h1>
+		<HeaderLink href="/">Главная</HeaderLink>
+		<HeaderLink href="/poems">Стихи</HeaderLink>
+		<HeaderLink href="/about">Oбо мне</HeaderLink>
+	</nav>
+</header>
+<style>
+	header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1em 0;
+	}
+
+	h1 {
+		font-size: 2rem;
+		font-family: "Hitch-hike";
+		text-align: center;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+</style>

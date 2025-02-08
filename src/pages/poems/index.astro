@@ -1,0 +1,118 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("poems");
+
+const years = [
+	...new Set(posts.map((post) => post.data.pubDate.getFullYear().toString())),
+];
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			a {
+				display: flex;
+				align-items: center;
+				font-family: "Podkova";
+				text-decoration: none;
+			}
+			svg {
+				transition: transform 0.2s ease-out;
+			}
+			a:hover {
+				color: #000000;
+			}
+			a:hover svg:first-child {
+				transform: translateX(-10px);
+			}
+			a:hover svg:last-child {
+				transform: translateX(10px);
+			}
+			a:hover path {
+				fill: #000000;
+			}
+			svg {
+				max-width: 5em;
+			}
+			svg path {
+				fill: #0c587d;
+			}
+			a {
+				color: #0c587d;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<ul>
+				{
+					years
+						.sort((a: string, b: string) => +b - +a)
+						.map((year) => {
+							return (
+								<li>
+									<a href={`/poems/${year}/`}>
+										<svg
+											width="175"
+											height="40"
+											viewBox="0 0 175 40"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M160 18.5C160.828 18.5 161.5 19.1716 161.5 20C161.5 20.8284 160.828 21.5 160 21.5V18.5ZM16 18.5H160V21.5H16V18.5Z"
+												fill="black"
+											/>
+											<path
+												d="M15.25 21.5526C14.5326 21.1384 14.2868 20.221 14.701 19.5036C15.1152 18.7861 16.0326 18.5403 16.75 18.9545L15.25 21.5526ZM30.3993 30.299L15.25 21.5526L16.75 18.9545L31.8993 27.701L30.3993 30.299Z"
+												fill="black"
+											/>
+											<path
+												d="M16.75 21.299C16.0326 21.7132 15.1152 21.4674 14.701 20.75C14.2868 20.0326 14.5326 19.1152 15.25 18.701L16.75 21.299ZM31.8993 12.5526L16.75 21.299L15.25 18.701L30.3993 9.95453L31.8993 12.5526Z"
+												fill="black"
+											/>
+										</svg>
+										{year}
+										<svg
+											width="175"
+											height="40"
+											viewBox="0 0 175 40"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M16 18.5C15.1716 18.5 14.5 19.1716 14.5 20C14.5 20.8284 15.1716 21.5 16 21.5V18.5ZM160 18.5H16V21.5H160V18.5Z"
+												fill="black"
+											/>
+											<path
+												d="M160.75 21.5526C161.467 21.1384 161.713 20.221 161.299 19.5036C160.885 18.7861 159.967 18.5403 159.25 18.9545L160.75 21.5526ZM145.601 30.299L160.75 21.5526L159.25 18.9545L144.101 27.701L145.601 30.299Z"
+												fill="black"
+											/>
+											<path
+												d="M159.25 21.299C159.967 21.7132 160.885 21.4674 161.299 20.75C161.713 20.0326 161.467 19.1152 160.75 18.701L159.25 21.299ZM144.101 12.5526L159.25 21.299L160.75 18.701L145.601 9.95453L144.101 12.5526Z"
+												fill="black"
+											/>
+										</svg>
+									</a>
+								</li>
+							);
+						})
+				}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

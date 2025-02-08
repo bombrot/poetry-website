@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'Hitch-hike';
+  src: url('/fonts/Hitch-hike.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Podkova';
+  src: url('/fonts/Podkova-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AnonymousPro';
+  src: url('/fonts/AnonymousPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AnonymousPro';
+  src: url('/fonts/AnonymousPro-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'AnonymousPro';
+  src: url('/fonts/AnonymousPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AnonymousPro';
+  src: url('/fonts/AnonymousPro-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  font-size: clamp(1rem, 0.4rem + 0.8svw, 1.2rem);
+  --blue: #0c587d;
+  --white: #f9f9f9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: unset;
+  font-family: 'AnonymousPro';
+  min-height: 100svh;
+  padding: 1em;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+pre {
+  font-family: "AnonymousPro";
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+main,
+header,
+footer {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80ch;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.poem p {
+  line-height: 1.4;
+}
